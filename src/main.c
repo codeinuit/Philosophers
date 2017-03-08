@@ -5,10 +5,14 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Wed Mar  8 22:07:41 2017 Lucas Debouté
+** Last update Wed Mar  8 22:52:33 2017 Lucas Debouté
 */
+
+#include "philosophers.h"
 
 int	main(int argc, char **argv)
 {
-  return (0);
+  if (check_arguments(argc, argv) != 0)
+    return (EXIT_FAILURE);
+  return (EXIT_SUCCESS);
 }
