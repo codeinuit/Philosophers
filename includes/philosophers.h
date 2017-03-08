@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Wed Mar  8 22:53:59 2017 Lucas Debouté
+** Last update Wed Mar  8 23:17:20 2017 Lucas Debouté
 */
 
 #ifndef _PHILOSOPHERS_H
@@ -21,6 +21,16 @@
 # include <string.h>
 # include <stdlib.h>
 
+/*
+** STRUCT
+*/
+
+typedef struct	s_philosophers
+{
+  int		philosophers;
+  int		occurences;
+}		t_philosophers;
+ 
 /* FUNCTION
 ** DECLARATIONS
 */
@@ -28,5 +38,9 @@
 int	check_arguments(int argc, char **argv);
 int	check_all_parameters(char **argv);
 int	display_error(char *error);
+int	get_values(char **argv, t_philosophers *philo);
+int	get_philosophers(char **argv);
+int	get_occurences(char **argv);
+
 
 #endif /* _PHILOSOPHERS_H */
