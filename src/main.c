@@ -5,10 +5,17 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Thu Mar  9 18:58:56 2017 Lucas Debouté
+** Last update Thu Mar  9 19:35:15 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
+
+int			philosophers_simulator(t_table *table)
+{
+  if (init_simulator(table) == 0)
+    return (1);
+  return (0);
+}
 
 int			main(int argc, char **argv)
 {
@@ -22,5 +29,7 @@ int			main(int argc, char **argv)
   if (check_arguments(argc, argv) != 0)
     return (EXIT_FAILURE);
   get_values(argv, &table);
+  if (philosophers_simulator(&table) == 1)
+    return (EXIT_FAILURE);
   return (EXIT_SUCCESS);
 }

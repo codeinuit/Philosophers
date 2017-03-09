@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Thu Mar  9 19:01:15 2017 Lucas Debouté
+** Last update Thu Mar  9 20:48:41 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -26,27 +26,30 @@
 ** STRUCT
 */
 
-typedef enum	t_action
+typedef enum		t_action
   {
     EAT,
     THINK,
     REST,
     NOTHING
-  }		e_action;
+  }			e_action;
 
-typedef struct	s_philo
+typedef struct		s_philo
 {
-  int		bowl;
-  int		chopsticks;
-  e_action	action;
-}		t_philo;
+  int			id;
+  int			bowl;
+  int			chopsticks;
+  struct s_philo	*neighbor;
+  e_action		action;
+}			t_philo;
 
-typedef struct	s_table
+typedef struct		s_table
 {
-  t_philo	philos;
-  int		philosophers;
-  int		occurences;
-}		t_table;
+  t_philo		*philos;
+  int			philosophers;
+  int			occurences;
+  pthread_mutex_t	*chopsticks;
+}			t_table;
 
 /* 
 ** FUNCTIONS

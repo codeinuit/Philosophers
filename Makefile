@@ -5,7 +5,7 @@
 ## Login   <lucas.deboute@epitech.eu>
 ## 
 ## Started on  Wed Mar  8 22:04:17 2017 Lucas Debouté
-## Last update Thu Mar  9 18:29:36 2017 Lucas Debouté
+## Last update Thu Mar  9 19:07:03 2017 Lucas Debouté
 ##
 
 CC	= gcc -lpthread
@@ -16,7 +16,8 @@ CFLAGS	= -Wall -Wextra -I./includes -L./lib
 SRCS	= src/main.c		\
 	  src/check_error.c	\
 	  src/parser.c		\
-	  src/help.c
+	  src/help.c		\
+	  src/init.c
 
 OBJS	= $(SRCS:.c=.o)
 
