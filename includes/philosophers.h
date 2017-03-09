@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Thu Mar  9 19:59:25 2017 Noémie CARON
+** Last update Thu Mar  9 19:01:15 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -31,7 +31,7 @@ typedef enum	t_action
     EAT,
     THINK,
     REST,
-    NOTHING;
+    NOTHING
   }		e_action;
 
 typedef struct	s_philo

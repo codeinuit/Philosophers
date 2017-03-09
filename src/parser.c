@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:31:07 2017 Lucas Debouté
-** Last update Wed Mar  8 23:14:31 2017 Lucas Debouté
+** Last update Thu Mar  9 18:59:23 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -36,12 +36,12 @@ int	get_occurences(char **argv)
   return (0);
 }
 
-int	get_values(char **argv, t_philosophers *philo)
+int	get_values(char **argv, t_table *table)
 {
-  philo->philosophers = get_philosophers(argv);
-  philo->occurences = get_occurences(argv);
-  if (philo->philosophers >= 0 &&
-      philo->philosophers >= 0)
+  table->philosophers = get_philosophers(argv);
+  table->occurences = get_occurences(argv);
+  if (table->philosophers >= 0 &&
+      table->philosophers >= 0)
     return (0);
   return (EXIT_FAILURE);
 }
