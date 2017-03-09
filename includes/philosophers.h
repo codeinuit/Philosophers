@@ -5,11 +5,11 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Wed Mar  8 23:17:20 2017 Lucas Debouté
+** Last update Thu Mar  9 19:59:25 2017 Noémie CARON
 */
 
-#ifndef _PHILOSOPHERS_H
-# define _PHILOSOPHERS_H
+#ifndef PHILOSOPHERS_H_
+# define PHILOSOPHERS_H_
 
 # define EXIT_SUCCESS 0
 # define EXIT_FAILURE 1
@@ -20,27 +20,44 @@
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
+# include <pthread.h>
 
 /*
 ** STRUCT
 */
 
-typedef struct	s_philosophers
+typedef enum	t_action
+  {
+    EAT,
+    THINK,
+    REST,
+    NOTHING;
+  }		e_action;
+
+typedef struct	s_philo
 {
+  int		bowl;
+  int		chopsticks;
+  e_action	action;
+}		t_philo;
+
+typedef struct	s_table
+{
+  t_philo	philos;
   int		philosophers;
   int		occurences;
-}		t_philosophers;
- 
-/* FUNCTION
+}		t_table;
+
+/* 
+** FUNCTIONS
 ** DECLARATIONS
 */
 
 int	check_arguments(int argc, char **argv);
 int	check_all_parameters(char **argv);
 int	display_error(char *error);
-int	get_values(char **argv, t_philosophers *philo);
+int	get_values(char **argv, t_table *table);
 int	get_philosophers(char **argv);
 int	get_occurences(char **argv);
 
-
-#endif /* _PHILOSOPHERS_H */
+#endif /* !PHILOSOPHERS_H */
