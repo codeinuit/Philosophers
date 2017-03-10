@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Thu Mar  9 20:48:41 2017 Lucas Debouté
+** Last update Fri Mar 10 00:30:22 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -38,7 +38,9 @@ typedef struct		s_philo
 {
   int			id;
   int			bowl;
-  int			chopsticks;
+  //  int			chopsticks;
+  int			has_resting;
+  pthread_mutex_t	chopsticks;
   struct s_philo	*neighbor;
   e_action		action;
 }			t_philo;
@@ -48,7 +50,8 @@ typedef struct		s_table
   t_philo		*philos;
   int			philosophers;
   int			occurences;
-  pthread_mutex_t	*chopsticks;
+  //  pthread_mutex_t	*chopsticks;
+  pthread_t		*threads;
 }			t_table;
 
 /* 
