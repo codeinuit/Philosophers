@@ -5,10 +5,11 @@
 ## Login   <lucas.deboute@epitech.eu>
 ## 
 ## Started on  Wed Mar  8 22:04:17 2017 Lucas Debouté
-## Last update Fri Mar 10 02:02:50 2017 Lucas Debouté
+## Last update Fri Mar 10 17:30:28 2017 Lucas Debouté
 ##
 
-CC	= gcc -lpthread -g
+CC	= gcc -lpthread
+
 RM	= rm -f
 
 CFLAGS	= -Wall -Wextra -I./includes -L./lib
@@ -20,13 +21,13 @@ SRCS	= src/main.c		\
 	  src/init.c		\
 	  src/display.c
 
-OBJS	= $(SRCS:.c=.o)
-
 NAME	= philo
 
-all: $(NAME)
+OBJS	= $(SRCS:.c=.o)
 
-$(NAME): $(OBJS)
+all: 	$(NAME)
+
+$(NAME):$(OBJS)
 	$(CC) -o $(NAME) $(OBJS)
 
 clean:
@@ -37,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all clean fclean re

@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Fri Mar 10 00:30:22 2017 Lucas Debouté
+** Last update Fri Mar 10 17:06:54 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -21,6 +21,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <pthread.h>
+# include <unistd.h>
 
 /*
 ** STRUCT
@@ -65,5 +66,13 @@ int	display_error(char *error);
 int	get_values(char **argv, t_table *table);
 int	get_philosophers(char **argv);
 int	get_occurences(char **argv);
+
+int	init_philosopher(t_table *table);
+int	init_simulator(t_table *table);
+
+void	display_status(t_table *table);
+void	display_help();
+
+void	*philosophers(void *data);
 
 #endif /* !PHILOSOPHERS_H */

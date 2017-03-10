@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 01:35:43 2017 Lucas Debouté
-** Last update Fri Mar 10 16:24:06 2017 Lucas Debouté
+** Last update Fri Mar 10 17:02:19 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
