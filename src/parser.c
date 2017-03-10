@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:31:07 2017 Lucas Debouté
-** Last update Fri Mar 10 02:13:16 2017 Lucas Debouté
+** Last update Fri Mar 10 17:40:57 2017 Noémie CARON
 */
 
 #include "philosophers.h"
@@ -17,7 +17,7 @@ int	get_philosophers(char **argv)
   i = 0;
   while (++i != 4)
     {
-      if (strcmp(argv[i], "-e") == 0)
+      if (strcmp(argv[i], "-p") == 0)
 	return (atoi(argv[i + 1]));
     }
   return (0);
@@ -30,7 +30,7 @@ int	get_occurences(char **argv)
   i = 0;
   while (++i != 4)
     {
-      if (strcmp(argv[i], "-p") == 0)
+      if (strcmp(argv[i], "-e") == 0)
 	return (atoi(argv[i + 1]));
     }
   return (0);
