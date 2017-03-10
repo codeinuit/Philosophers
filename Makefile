@@ -5,7 +5,7 @@
 ## Login   <lucas.deboute@epitech.eu>
 ## 
 ## Started on  Wed Mar  8 22:04:17 2017 Lucas Debouté
-## Last update Fri Mar 10 17:30:28 2017 Lucas Debouté
+## Last update Fri Mar 10 18:42:53 2017 Noémie CARON
 ##
 
 CC	= gcc -lpthread
@@ -19,7 +19,8 @@ SRCS	= src/main.c		\
 	  src/parser.c		\
 	  src/help.c		\
 	  src/init.c		\
-	  src/display.c
+	  src/display.c		\
+	  src/check.c
 
 NAME	= philo
 
