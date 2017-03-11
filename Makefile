@@ -5,14 +5,15 @@
 ## Login   <lucas.deboute@epitech.eu>
 ## 
 ## Started on  Wed Mar  8 22:04:17 2017 Lucas Debouté
-## Last update Sat Mar 11 12:31:35 2017 Lucas Debouté
+## Last update Sat Mar 11 14:29:34 2017 Lucas Debouté
 ##
 
-CC	= gcc -L./lib
+CC	= gcc
 
 RM	= rm -f
 
-CFLAGS	= -Wall -Wextra -I./includes -lpthread 
+CFLAGS	= -Wall -Wextra -I./includes
+LDFLAGS	= -L./lib -lriceferee -lpthread
 
 SRCS	= src/main.c		\
 	  src/check_error.c	\
@@ -20,7 +21,8 @@ SRCS	= src/main.c		\
 	  src/help.c		\
 	  src/init.c		\
 	  src/display.c		\
-	  src/check.c
+	  src/check_end.c	\
+	  src/actions.c
 
 NAME	= philo
 
@@ -29,7 +31,7 @@ OBJS	= $(SRCS:.c=.o)
 all: 	$(NAME)
 
 $(NAME):$(OBJS)
-	$(CC) -o $(NAME) $(OBJS) -lriceferee
+	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJS)

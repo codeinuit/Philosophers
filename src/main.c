@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Sat Mar 11 12:03:48 2017 Lucas Debouté
+** Last update Sat Mar 11 16:14:03 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -19,20 +19,17 @@ void*			philosophers(void *data)
     {
       if (pthread_mutex_trylock(&philo->chopsticks) == 0)
 	{
-	if (pthread_mutex_trylock(&philo->neighbor->chopsticks) == 0)
+	  if (pthread_mutex_trylock(&philo->neighbor->chopsticks) == 0)
 	    {
-	      philo->action = EAT;
-	      philo->bowl -= 1;
-	      sleep(1);
-	      pthread_mutex_unlock(&philo->neighbor->chopsticks);
+	      action_eat(philo);
 	    }
-	else
-	  {
-	    philo->action = THINK;
-	  }
-	pthread_mutex_unlock(&philo->chopsticks);
+	  else
+	    {
+	      action_think(philo);
+	    }
 	}
-      philo->action = REST;
+      if (philo->action == EAT)
+	action_rest(philo);
     }
   return (NULL);
 }
@@ -49,14 +46,13 @@ int			philosophers_simulator(t_table *table)
   i = -1;
   while (check_bowl_empty(table))
     {
-      usleep(100);
-      display_status(table);
+      //usleep(100);
+      //display_status(table);
     }
+  empty_bowls(table);
   i = -1;
-  //  while (++i < table->philosophers)
-  //  pthread_kill(&table->threads[i], 1);
-  //  pthread_join(table->threads[i], NULL);
-
+  while (++i < table->philosophers)
+    pthread_join(table->threads[i], NULL);
   return (0);
 }
 
@@ -75,6 +71,7 @@ int			main(int argc, char **argv)
   get_values(argv, &table);
   if (philosophers_simulator(&table) == 1)
     return (EXIT_FAILURE);
-  pthread_exit(NULL);
+  //  pthread_exit(NULL);
+  RCFCleanup();
   return (EXIT_SUCCESS);
 }
