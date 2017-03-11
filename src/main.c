@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Fri Mar 10 16:39:30 2017 Lucas Debouté
+** Last update Sat Mar 11 12:03:48 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -47,10 +47,15 @@ int			philosophers_simulator(t_table *table)
   while (++i < table->philosophers)
     pthread_create(&table->threads[i], NULL, philosophers, (void *) &table->philos[i]);
   i = -1;
-  	      usleep(100);
-  display_status(table);
-  while (++i < table->philosophers)
-    pthread_join(table->threads[i], NULL);
+  while (check_bowl_empty(table))
+    {
+      usleep(100);
+      display_status(table);
+    }
+  i = -1;
+  //  while (++i < table->philosophers)
+  //  pthread_kill(&table->threads[i], 1);
+  //  pthread_join(table->threads[i], NULL);
 
   return (0);
 }
@@ -64,6 +69,7 @@ int			main(int argc, char **argv)
       display_help();
       return (EXIT_SUCCESS);
     }
+  RCFStartup(argc, argv);
   if (check_arguments(argc, argv) != 0)
     return (EXIT_FAILURE);
   get_values(argv, &table);

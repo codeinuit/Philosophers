@@ -5,14 +5,14 @@
 ## Login   <lucas.deboute@epitech.eu>
 ## 
 ## Started on  Wed Mar  8 22:04:17 2017 Lucas Debouté
-## Last update Fri Mar 10 18:42:53 2017 Noémie CARON
+## Last update Sat Mar 11 12:31:35 2017 Lucas Debouté
 ##
 
-CC	= gcc -lpthread
+CC	= gcc -L./lib
 
 RM	= rm -f
 
-CFLAGS	= -Wall -Wextra -I./includes -L./lib
+CFLAGS	= -Wall -Wextra -I./includes -lpthread 
 
 SRCS	= src/main.c		\
 	  src/check_error.c	\
@@ -29,7 +29,7 @@ OBJS	= $(SRCS:.c=.o)
 all: 	$(NAME)
 
 $(NAME):$(OBJS)
-	$(CC) -o $(NAME) $(OBJS)
+	$(CC) -o $(NAME) $(OBJS) -lriceferee
 
 clean:
 	$(RM) $(OBJS)

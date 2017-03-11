@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Fri Mar 10 17:06:54 2017 Lucas Debouté
+** Last update Sat Mar 11 12:04:15 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -22,6 +22,8 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <unistd.h>
+
+# include "extern.h"
 
 /*
 ** STRUCT
