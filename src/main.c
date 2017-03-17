@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Fri Mar 17 11:15:24 2017 Lucas Debouté
+** Last update Fri Mar 17 12:53:54 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -17,6 +17,7 @@ void*			philosophers(void *data)
   int			left_chopstick;
 
   philo = (t_philo *) data;
+  while (philo->table->running == 1);
   while (philo->bowl > 0)
     {
       if (philo->action == EAT)
@@ -44,7 +45,9 @@ int			philosophers_simulator(t_table *table)
   while (++i < table->philosophers)
     pthread_create(&table->threads[i], NULL, philosophers, (void *)
 		   &table->philos[i]);
+  
   i = -1;
+  table->running = 0;
   while (check_bowl_empty(table));
   empty_bowls(table);
   i = -1;

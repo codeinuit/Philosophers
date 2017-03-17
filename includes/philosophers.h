@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 11:17:11 2017 Lucas Debouté
-** Last update Fri Mar 17 11:20:28 2017 Lucas Debouté
+** Last update Fri Mar 17 12:34:40 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <unistd.h>
+# include <stdbool.h>
 # include "extern.h"
 
 # define EXIT_SUCCESS 0
@@ -43,6 +44,7 @@ typedef struct		s_philo
   int			has_resting;
   pthread_mutex_t	chopsticks;
   struct s_philo	*neighbor;
+  struct s_table	*table;
   e_action		action;
 }			t_philo;
 
@@ -51,6 +53,7 @@ typedef struct		s_table
   t_philo		*philos;
   int			philosophers;
   int			occurences;
+  bool			running;
   pthread_t		*threads;
 }			t_table;
 
