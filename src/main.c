@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Sat Mar 11 16:34:11 2017 Lucas Debouté
+** Last update Fri Mar 17 11:15:24 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -26,27 +26,10 @@ void*			philosophers(void *data)
 	  right_chopstick = pthread_mutex_lock(&philo->chopsticks);
 	  left_chopstick = pthread_mutex_trylock(&philo->neighbor->chopsticks);
 	 if (!right_chopstick && !left_chopstick)
-	    {
-	      action_eat(philo);
-	    }
+	   action_eat(philo);
 	 else if (!right_chopstick || !left_chopstick)
-	    {
-	      action_think(philo);
-	    }
+	   action_think(philo);
 	}
-      /*if (pthread_mutex_trylock(&philo->chopsticks) == 0)
-	{
-	  if (pthread_mutex_trylock(&philo->neighbor->chopsticks) == 0)
-	    {
-	      action_eat(philo);
-	    }
-	  else
-	    {
-	      action_think(philo);
-	    }
-	}
-      if (philo->action == EAT)
-      action_rest(philo);*/
     }
   return (NULL);
 }
@@ -59,13 +42,10 @@ int			philosophers_simulator(t_table *table)
   if (init_simulator(table) != 0)
     return (1);
   while (++i < table->philosophers)
-    pthread_create(&table->threads[i], NULL, philosophers, (void *) &table->philos[i]);
+    pthread_create(&table->threads[i], NULL, philosophers, (void *)
+		   &table->philos[i]);
   i = -1;
-  while (check_bowl_empty(table))
-    {
-      //usleep(100);
-      //display_status(table);
-    }
+  while (check_bowl_empty(table));
   empty_bowls(table);
   i = -1;
   while (++i < table->philosophers)
@@ -88,7 +68,6 @@ int			main(int argc, char **argv)
   get_values(argv, &table);
   if (philosophers_simulator(&table) == 1)
     return (EXIT_FAILURE);
-  //  pthread_exit(NULL);
   RCFCleanup();
   return (EXIT_SUCCESS);
 }

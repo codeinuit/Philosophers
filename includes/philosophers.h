@@ -1,29 +1,28 @@
 /*
-** philosophers.h for philosophes in /home/codeine/Projects/B4/PSU/PSU_2016_philo
+** philosophers.h for philosophes in /home/codeine/Projects/B4/PSU/PSU_2016_philo/src
 ** 
 ** Made by Lucas Debouté
 ** Login   <lucas.deboute@epitech.eu>
 ** 
-** Started on  Wed Mar  8 21:41:21 2017 Lucas Debouté
-** Last update Sat Mar 11 15:01:09 2017 Lucas Debouté
+** Started on  Fri Mar 17 11:17:11 2017 Lucas Debouté
+** Last update Fri Mar 17 11:20:28 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
 # define PHILOSOPHERS_H_
-
-# define EXIT_SUCCESS 0
-# define EXIT_FAILURE 1
-
-# define ANSI_COLOR_RED "\x1b[31m"
-# define ANSI_COLOR_RESET "\x1b[0m"
 
 # include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
 # include <pthread.h>
 # include <unistd.h>
-
 # include "extern.h"
+
+# define EXIT_SUCCESS 0
+# define EXIT_FAILURE 1
+
+# define ANSI_COLOR_RED "\x1b[31m"
+# define ANSI_COLOR_RESET "\x1b[0m"
 
 /*
 ** STRUCT
