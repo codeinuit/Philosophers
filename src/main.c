@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Sat Mar 11 16:14:03 2017 Lucas Debouté
+** Last update Sat Mar 11 16:34:11 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -13,11 +13,28 @@
 void*			philosophers(void *data)
 {
   t_philo		*philo;
+  int			right_chopstick;
+  int			left_chopstick;
 
   philo = (t_philo *) data;
   while (philo->bowl > 0)
     {
-      if (pthread_mutex_trylock(&philo->chopsticks) == 0)
+      if (philo->action == EAT)
+	action_rest(philo);
+      else
+	{
+	  right_chopstick = pthread_mutex_lock(&philo->chopsticks);
+	  left_chopstick = pthread_mutex_trylock(&philo->neighbor->chopsticks);
+	 if (!right_chopstick && !left_chopstick)
+	    {
+	      action_eat(philo);
+	    }
+	 else if (!right_chopstick || !left_chopstick)
+	    {
+	      action_think(philo);
+	    }
+	}
+      /*if (pthread_mutex_trylock(&philo->chopsticks) == 0)
 	{
 	  if (pthread_mutex_trylock(&philo->neighbor->chopsticks) == 0)
 	    {
@@ -29,7 +46,7 @@ void*			philosophers(void *data)
 	    }
 	}
       if (philo->action == EAT)
-	action_rest(philo);
+      action_rest(philo);*/
     }
   return (NULL);
 }

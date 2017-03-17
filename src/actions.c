@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Sat Mar 11 14:27:21 2017 Lucas Debouté
-** Last update Sat Mar 11 14:59:56 2017 Lucas Debouté
+** Last update Fri Mar 17 10:44:13 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -17,6 +17,7 @@ void	action_eat(t_philo *philo)
   lphilo_eat();
   philo->action = EAT;
   philo->bowl -= 1;
+  usleep(30);
   pthread_mutex_unlock(&philo->chopsticks);
   pthread_mutex_unlock(&philo->neighbor->chopsticks);
   lphilo_release_chopstick(&philo->chopsticks);
@@ -37,6 +38,7 @@ void	action_think(t_philo *philo)
 void	action_rest(t_philo *philo)
 {
   lphilo_sleep();
+  usleep(30);
   philo->action = REST;
   //sleep(1);
 }
