@@ -5,7 +5,7 @@
 ** Login   <noemie.caron@epitech.eu>
 ** 
 ** Started on  Fri Mar 10 18:39:04 2017 Noémie CARON
-** Last update Sat Mar 11 14:25:34 2017 Lucas Debouté
+** Last update Sun Mar 19 23:34:34 2017 Lucas Debouté
 */
 
 #include "philosophers.h"

@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 11:17:11 2017 Lucas Debouté
-** Last update Sun Mar 19 21:13:19 2017 Lucas Debouté
+** Last update Sun Mar 19 23:34:32 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -58,7 +58,7 @@ typedef struct		s_table
   pthread_t		*threads;
 }			t_table;
 
-/* 
+/*
 ** FUNCTIONS
 ** DECLARATIONS
 */
@@ -80,5 +80,8 @@ void	*philosophers(void *data);
 void	action_eat(t_philo *philo);
 void	action_think(t_philo *philo);
 void	action_rest(t_philo *philo);
+
+int	check_bowl_empty(t_table *table);
+void	empty_bowls(t_table *table);
 
 #endif /* !PHILOSOPHERS_H */

@@ -1,0 +1,11 @@
+int	get_values(char **argv, t_table *table)
+{
+  table->philosophers = get_philosophers(argv);
+  table->occurences = get_occurences(argv);
+  if (table->philosophers == 1)
+    return (EXIT_FAILURE);
+  if (table->philosophers >= 2 &&
+      table->occurences >= 0)
+    return (0);
+  return (EXIT_FAILURE);
+}
