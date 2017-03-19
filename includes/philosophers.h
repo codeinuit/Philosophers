@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 11:17:11 2017 Lucas Debouté
-** Last update Fri Mar 17 12:34:40 2017 Lucas Debouté
+** Last update Sun Mar 19 21:13:19 2017 Lucas Debouté
 */
 
 #ifndef PHILOSOPHERS_H_
@@ -43,6 +43,7 @@ typedef struct		s_philo
   int			bowl;
   int			has_resting;
   pthread_mutex_t	chopsticks;
+  int			can_eat;
   struct s_philo	*neighbor;
   struct s_table	*table;
   e_action		action;

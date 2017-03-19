@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 19:06:02 2017 Lucas Debouté
-** Last update Fri Mar 17 12:53:12 2017 Lucas Debouté
+** Last update Sun Mar 19 22:35:11 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -20,11 +20,12 @@ int	init_philosopher(t_table *table)
   while (++i < table->philosophers)
     {
       table->philos[i].id = i;
-      table->philos[i].action = THINK;
+      table->philos[i].action = EAT;
       table->philos[i].bowl = table->occurences;
       pthread_mutex_init(&table->philos[i].chopsticks, NULL);
       table->philos[i].has_resting = 0;
       table->philos[i].table = table;
+      table->philos[i].can_eat = 1;
       if (i == table->philosophers - 1)
 	table->philos[i].neighbor = &table->philos[0];
       else

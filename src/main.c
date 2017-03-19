@@ -5,7 +5,7 @@
 ** Login   <lucas.deboute@epitech.eu>
 ** 
 ** Started on  Wed Mar  8 22:06:28 2017 Lucas Debouté
-** Last update Fri Mar 17 12:53:54 2017 Lucas Debouté
+** Last update Sun Mar 19 22:46:48 2017 Lucas Debouté
 */
 
 #include "philosophers.h"
@@ -13,24 +13,21 @@
 void*			philosophers(void *data)
 {
   t_philo		*philo;
-  int			right_chopstick;
-  int			left_chopstick;
 
   philo = (t_philo *) data;
   while (philo->table->running == 1);
   while (philo->bowl > 0)
     {
-      if (philo->action == EAT)
-	action_rest(philo);
-      else
+      if (philo->can_eat == 1)
 	{
-	  right_chopstick = pthread_mutex_lock(&philo->chopsticks);
-	  left_chopstick = pthread_mutex_trylock(&philo->neighbor->chopsticks);
-	 if (!right_chopstick && !left_chopstick)
-	   action_eat(philo);
-	 else if (!right_chopstick || !left_chopstick)
-	   action_think(philo);
+	  if (philo->action == REST)
+	    action_think(philo);
+	  else if (philo->action == THINK)
+	    action_eat(philo);
+	  else
+	    action_rest(philo);
 	}
+      usleep(10);
     }
   return (NULL);
 }
@@ -45,7 +42,6 @@ int			philosophers_simulator(t_table *table)
   while (++i < table->philosophers)
     pthread_create(&table->threads[i], NULL, philosophers, (void *)
 		   &table->philos[i]);
-  
   i = -1;
   table->running = 0;
   while (check_bowl_empty(table));
@@ -68,7 +64,11 @@ int			main(int argc, char **argv)
   RCFStartup(argc, argv);
   if (check_arguments(argc, argv) != 0)
     return (EXIT_FAILURE);
-  get_values(argv, &table);
+  if (get_values(argv, &table) == EXIT_FAILURE)
+    {
+      display_error("Invalid number");
+      return (EXIT_FAILURE);
+    }
   if (philosophers_simulator(&table) == 1)
     return (EXIT_FAILURE);
   RCFCleanup();
